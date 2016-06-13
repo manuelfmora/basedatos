@@ -7,6 +7,7 @@ package DBPackages;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -61,7 +62,7 @@ public class Listado extends HttpServlet {
             Logger.getLogger(Listado.class.getName()).log(Level.SEVERE,
                     "No se pudo cerrar el objeto Statement", ex);
 
-            System.out.println("Error, no se pudo cerrar el objeto Statement");
+            out.println("Error, no se pudo cerrar el objeto Statement");
         } finally {
             try {
                 conexion.close();
@@ -70,7 +71,7 @@ public class Listado extends HttpServlet {
                         "No se pudo cerrar el objeto Conexion", ex);
             }
 
-            System.out.println("Error, no se pudo cerrar el objeto Conexion");
+            out.println("Error, no se pudo cerrar el objeto Conexion");
         }
     }
 
@@ -131,7 +132,7 @@ public class Listado extends HttpServlet {
     }
 
     /**
-     * Devuelva una tabla html con los datos de los usuarios
+     * Devuelva una tabla html con los datos de los centros
      *
      * @param inicio Desde donde tiene que mostrar
      * @return Tabla con los datos
@@ -146,7 +147,7 @@ public class Listado extends HttpServlet {
                 listado = statement.executeQuery("");
             }
         } catch (SQLException ex) {
-            System.out.println("Se produjo un error haciendo una consulta");
+           out.println("Se produjo un error haciendo una consulta");
         }
 
         //RECORREMOS EL RESULTADO Y CREAMOS LA TABLA
@@ -168,7 +169,7 @@ public class Listado extends HttpServlet {
                 cont++;
             }
         } catch (SQLException ex) {
-            System.out.println("Se ha producido un error leyendo el listado");
+            out.println("Se ha producido un error leyendo el listado");
         }
         tabla += "</table>";
 
@@ -176,12 +177,12 @@ public class Listado extends HttpServlet {
     }
 
     /**
-     * Devuelve el número total de usuario
+     * Devuelve el número total centros
      *
-     * @return Número de usuarios
+     * @return Número de centros
      */
     protected int GetNumCentros() {
-
+      out.println("Entra en GETnumcentro");
         //HACEMOS LA CONSULTA
         ResultSet listado = null;
         try {
@@ -190,7 +191,7 @@ public class Listado extends HttpServlet {
                         + "FROM salud.salud_centros;");
             }
         } catch (SQLException ex) {
-            System.out.println("Se produjo un error haciendo una consulta");
+            out.println("Se produjo un error haciendo una consulta");
         }
 
         //RECORREMOS EL RESULTADO Y CREAMOS LA TABLA
@@ -200,7 +201,7 @@ public class Listado extends HttpServlet {
                 num = listado.getString("num");
             }
         } catch (SQLException ex) {
-            System.out.println("Se ha producido un error leyendo el listado");
+            out.println("Se ha producido un error leyendo el listado");
         }
 
         return Integer.parseInt(num);

@@ -3,8 +3,10 @@
     Created on : 12-jun-2016, 20:09:38
     Author     : Manuel Mora
 --%>
-<%! int inicio = 0;
-    int numPaginas = 0;%>
+<%!
+    int inicio = 0;
+    int numPaginas = 0;
+%>
 <%
     if (request.getAttribute("inicio") != null) {
         inicio = (Integer) request.getAttribute("inicio");
@@ -18,7 +20,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Listado Usuarios</title>
+        <title>Listado Centros</title>
         <link rel="stylesheet" type="text/css" href="assets/style.css" media="screen" />
        
     </head>
