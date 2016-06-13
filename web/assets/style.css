@@ -1,0 +1,46 @@
+body{
+    font-family: sans-serif;
+}
+
+/*Tabla de usuarios*/
+table {   
+    border: 1px solid white;
+    border-collapse: collapse;
+    width: 60%;
+    max-width: 500px;
+    min-width: 500px;
+}
+th, td {
+    width: 50px;
+    border: 1px solid white;
+    padding: 5px;
+}
+th{
+    background-color: #A0A0A0;
+    color: white;
+}
+
+.par{
+    background-color: #E8E8E8;
+}
+.impar{
+    background-color: white;
+}
+/*PAGINADOR*/
+.paginas{
+    font-size: 15px;
+    text-decoration: none;
+    color: black;
+    background-color: #D8D8D8;
+    padding: 7px;
+    border: 1px solid #585858;
+    display: inline-block;
+    width: 23px;
+    height: 21px;
+    vertical-align: middle;
+    margin: 0 auto;
+    text-align: center;
+}
+.paginaActual{
+    font-weight: bold;
+}
