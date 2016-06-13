@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/salud?zeroDateTimeBehavior=convertToNull", "root", "");
 package DBPackages;
 
 import java.io.IOException;
@@ -39,7 +40,6 @@ public class Listado extends HttpServlet {
     public void init(ServletConfig config) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-//            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/salud?zeroDateTimeBehavior=convertToNull", "root", "");
             conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/salud","root", "");
             statement = conexion.createStatement();
         } catch (ClassNotFoundException ex) {
@@ -142,12 +142,26 @@ public class Listado extends HttpServlet {
 
         //HACEMOS LA CONSULTA
         ResultSet listado = null;
+        String sql="";
         try {
             synchronized (statement) {
-                listado = statement.executeQuery("");
+                 sql="select s.nombre,s.Direccion,s.localidad,p.NOMBRE as Provincia " 
+                                                    +"from salud_centros s,municipios m, provincias p "
+                                                    +"where s.codmu = m.CODMU "
+                                                    +"and m.CODPROV=p.IDPROV " 
+                                                    +"order by s.nombre "
+                                                    +"limit " + Integer.toString(inicio) + ", 20;";
+                
+                listado = statement.executeQuery(sql);
+//                "SELECT u.id 'id', u.nombre 'nombre', u.apellido1 'apellido1', u.apellido2 'apellido2', p.nombre 'provincia', prov_cod 'id' "
+//                        + "FROM usuarios.t_usuarios u  INNER JOIN t_provincias p "
+//                        + "ON u.prov_cod = p.cod "
+//                        + "ORDER BY u.nombre "
+//                        + "LIMIT " + Integer.toString(inicio) + ", 20;");
             }
         } catch (SQLException ex) {
            out.println("Se produjo un error haciendo una consulta");
+           return "<p>HAY ERROR: </p><pre>"+sql+"</pre><p>"+ex.getMessage()+"</p>";
         }
 
         //RECORREMOS EL RESULTADO Y CREAMOS LA TABLA
@@ -209,7 +223,7 @@ public class Listado extends HttpServlet {
 
 
         
-}
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
