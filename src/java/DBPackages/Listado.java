@@ -151,13 +151,10 @@ public class Listado extends HttpServlet {
                                                     +"and m.CODPROV=p.IDPROV " 
                                                     +"order by s.nombre "
                                                     +"limit " + Integer.toString(inicio) + ", 20;";
+                 out.println(Integer.toString(inicio));
                 
                 listado = statement.executeQuery(sql);
-//                "SELECT u.id 'id', u.nombre 'nombre', u.apellido1 'apellido1', u.apellido2 'apellido2', p.nombre 'provincia', prov_cod 'id' "
-//                        + "FROM usuarios.t_usuarios u  INNER JOIN t_provincias p "
-//                        + "ON u.prov_cod = p.cod "
-//                        + "ORDER BY u.nombre "
-//                        + "LIMIT " + Integer.toString(inicio) + ", 20;");
+
             }
         } catch (SQLException ex) {
            out.println("Se produjo un error haciendo una consulta");

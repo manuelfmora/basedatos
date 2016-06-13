@@ -28,8 +28,8 @@
         <%@ include file="index.jsp"%><%--Incluimos menú --%>
     <center>
         <hr noshade>
-        <h1><u>Listado de usuarios</u></h1>
-        <h2>Número de usuarios: <% out.println(request.getAttribute("numCentros")); %></h2>
+        <h1><u>Listado de Centros</u></h1>
+        <h2>Número de centros: <% out.println(request.getAttribute("numcentros")); %></h2>
 
         <%
             if (request.getAttribute("tabla") != null) {
@@ -41,13 +41,13 @@
         <%-- PAGINADOR --%>                
         <p>      
             <% if (inicio != pagActual) {%>
-                <a href="Listado?inicio=0" class="paginas" title="Inicio"><<</a>
-                <a href="Listado?inicio=<%=(inicio - 20)%>" class="paginas" title="Anterior"><</a>
+                <a href="listado?inicio=0" class="paginas" title="Inicio"><<</a>
+                <a href="listado?inicio=<%=(inicio - 20)%>" class="paginas" title="Anterior"><</a>
             <% } %>
 
             <% for (int i = 0; i < numPaginas; i++) {
                 if ((i - 2) <= pagActual && (pagActual <= i + 2) && i != pagActual) {%> 
-                        <a href="Listado?inicio=<%=(i * 20)%>" class="paginas"><%=i + 1%></a>
+                        <a href="listado?inicio=<%=(i * 20)%>" class="paginas"><%=i + 1%></a>
                 <% } //Fin if%>
                 
                 <% if (i == pagActual) {%> 
@@ -57,18 +57,18 @@
             <%} //Fin for%>
 
             <% if (numPaginas != (pagActual+1)) { //pagActual empieza en 0, por eso sumamos 1%>
-                <a href="Listado?inicio=<%=(inicio + 20)%>" class="paginas" title="Siguiente">></a>
-                <a href="Listado?inicio=<%=((numPaginas - 1) * 20)%>" class="paginas" title="Final">>></a>
+                <a href="listado?inicio=<%=(inicio + 20)%>" class="paginas" title="Siguiente">></a>
+                <a href="listado?inicio=<%=((numPaginas - 1) * 20)%>" class="paginas" title="Final">>></a>
             <% }%>
         </p>
     </center>
-    <script src="assets/jquery.min.js" type="text/javascript"></script>
+            <%--    <script src="assets/jquery.min.js" type="text/javascript"></script>
     <script>
         $(document).ready(function () {
             $("tr:odd").addClass("impar"); // filas impares
             $("tr:even").addClass("par"); // filas pares
         });
-    </script>
+</script>--%>
 </body>
 </html>
 
