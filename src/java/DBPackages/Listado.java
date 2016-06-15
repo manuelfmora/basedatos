@@ -193,7 +193,7 @@ public class Listado extends HttpServlet {
      * @return Número de centros
      */
     protected int GetNumCentros() {
-      out.println("Entra en GETnumcentro");
+     
         //HACEMOS LA CONSULTA
         ResultSet listado = null;
         try {

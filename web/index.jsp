@@ -16,7 +16,7 @@
     <center>
         <h1><u>ESTADÍSTICAS CENTROS SALUD</u></h1>
         <li><a href="listado">Mostrar todos los centros</a></li>
-        <li><a href="Porcentaje.jsp">Mostrar porcentaje de centros</a></li>        
+        <li><a href="Porcentaje">Mostrar porcentaje de centros</a></li>        
         <hr size="16px" color="black" />
     </center>
 

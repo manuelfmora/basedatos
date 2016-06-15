@@ -4,9 +4,17 @@
         <servlet-name>Listado</servlet-name>
         <servlet-class>DBPackages.Listado</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Porcentaje</servlet-name>
+        <servlet-class>DBPackages.Porcentaje</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Listado</servlet-name>
         <url-pattern>/listado</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Porcentaje</servlet-name>
+        <url-pattern>/Porcentaje</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
